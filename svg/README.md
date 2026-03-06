@@ -1,1 +1,0 @@
-https://github.com/jjjunnior02/zakrivayuschiy-teg-ad

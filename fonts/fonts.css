@@ -1,17 +1,20 @@
-/* fonts/fonts.css */
-
 @font-face {
   font-family: 'PressStart2P';
+  /* Определяет источники шрифта: сначала локальная версия, затем файл woff */
   src: local("PressStart2P-Regular"), url('./PressStart2P-Regular.woff') format('woff');
   font-weight: 400 785;
+  /* Задаёт стратегию отображения шрифта: показывает резервный шрифт, пока загружается кастомный */
   font-display: swap;
 }
 
+/* Объявление нового шрифта с именем семейства 'Inter' */
 @font-face {
   font-family: 'Inter';
+  /* Определяет источники шрифта: сначала локальная версия, затем переменный woff2 с поддержкой вариаций */
   src: local("Inter"),
   url('./Inter-Variable.woff2') format('woff2 supports variations'),
   url('./Inter-Variable.woff2') format('woff2-variations');
   font-weight: 400 785;
+  /* Задаётображения шрифта: показывает резервный шрифт, пока загружается кастомный */
   font-display: swap;
 }
