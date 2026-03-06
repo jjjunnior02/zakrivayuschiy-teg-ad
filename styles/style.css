@@ -1,500 +1,305 @@
-/* Медиазапрос для устройств с шириной экрана до 500 пикселей */
-@media (max-width: 500px) {
-  /* Уменьшает размер шрифта заголовка первого уровня в шапке */
-  .header h1 {
-    font-size: 49px;
-  }
-  /* Уменьшает размер шрифтаого уровня в шапке */
-  .header h2 {
-    font-size: 14px;
-  }
-  /* Применяет флексбокс к кнопке сохранения */
-  .button__save {
-    display: flex;
-    /* Располагает элементы в колонку */
-    flex-direction: column;
-    /* Центрирует элементы по главной оси */
-    justify-content: center;
-    /* Центрирует элементы по поперечной оси */
-    align-items: center;
-    /* Устанавливает внутренние отступы */
-    padding: 15px 20px;
-  }
-  /* Применяет размеры к иконке дискеты внутри */
-  .button__save .floppy__icon {
-    width: 28px;
-    height: 28px;
-  }
+.page {
+  min-inline-size: 320px;
+  min-block-size: 100dvb;
+  font-family: var(--inter-font, "sans-serif");
+  font-variation-settings: "wght" var(--card-text-width), "wdth" 100;
+  background: var(--main-background-color);
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: hard-light;
 }
 
-/* Условие для поддержки браузером свойства -webkit-text-stroke */
+.header {
+  font-family: var(--ps2p-font, "sans-serif");
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+  height: 368px;
+  background: var(--background-color);
+  border: 2px solid var(--border-color);
+}
+
+.header h1 {
+  font-size: 65px;
+  font-weight: normal;
+}
+
+.header h2 {
+  font-size: 23px;
+  font-weight: normal;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.cards .card {
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color);
+}
+
+.cards .card .card__header {
+  padding: 5px 10px;
+  border: 2px solid var(--border-color);
+}
+
+.cards .card .card__header .card__header-heading {
+  font-size: 18px;
+  font-variation-settings: "wght" var(--card-headers-width);
+}
+
+.cards .card .card__img {
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  position: relative;
+}
+
+.cards .card .card__img img {
+  width: 100%;
+  display: block;
+}
+
+.cards .card .card__img .card__img-text {
+  font-family: var(--ps2p-font, "sans-serif");
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  opacity: 50%;
+  font-size: 14px;
+  text-shadow: -1px 0 var(--stroke-color), 0 1px var(--stroke-color), 1px 0 var(--stroke-color), 0 -1px var(--stroke-color);
+}
+
 @supports (-webkit-text-stroke: 1px var(--stroke-color)) {
-еняет обводку к тексту на изображении карточки */
   .card__img-text {
     -webkit-text-stroke: 1px var(--stroke-color);
   }
 }
 
-/* Альтернативный способ создания обводки текста через тени */
 .card__img-text {
-  /* Создает тени по четырем направлениям для имитации обводки */
   text-shadow:
-    /* Тень слева сверху */
     -1px -1px 0 var(--stroke-color),
-     /* Тень справа сверху */
      1px -1px 0 var(--stroke-color),
-    /* Тень слева снизу */
     -1px  1px 0 var(--stroke-color),
-     /* Тень справа снизу */
      1px  1px 0 var(--stroke-color);
 }
 
-/* Применяет стили к изображению секции */
-.section__image {
-  /* Устанавливает ширину изображения в 100% родительского контейнера */
-  width: 100%;
-  /* Добавляет сплошную границу */
-  border: 2px solid var(--border-color);
-}
-
-/* Сального окна сохранения */
-.save__modal {
-  /* Фиксирует позицию окна на экране */
-  position: fixed;
-  /* Занимает всю доступную область экрана */
-  inset: 0;
-  /* Устанавливает максимальную ширину окна */
-  max-width: 353px;
-  /* Устанавливает ширину окна */
-  width: 353px;
-  /* Устанавливает внутренние отступы */
-  padding: 30px;
-  /* Применяет шрифт Press Start 2P */
-  font-family: var(--ps2p-font, "sans-serif");
-  /* Устанавливает размер шрифта */
-  font-size: 14px;
-  /* Устанавливает высоту строки */
-  line-height: 90%;
-  /* Добавляет сплошную границу */
-  border: 2px solid var(--border-color);
-}
-
-/* Стили для заднего фона модального окна */
-.save__modal::backdrop {
-  /* Устанавливает цвет фона */
-  background: var(--background-modal-color);
-  /* Устанавливает прозрачность */
-  opacity: 75%;
-}
-
-/* Стили для содержимого модального окна */
-.save__modal .content__modal {
-  /* Применяет флексбокс к содержимому */
-  display: flex;
-  /* Устанавливает нижний внешний отступ */
-  margin-bottom: 30px;
-  /* Устанавливает расстояние между элементами */
-  gap: 20px;
-}
-
-/* Стили для обертки иконки дискеты в модальном окне */
-.save__modal .content__modal .floppy__icon__wrapper {
-  /* Применяет флексбокс к обертке */
-  display: flex;
-  /* Центрирует элементы по главной оси */
-  justify-content: center;
-  /* Центрирует элементы по поперечной оси */
-  align-items: center;
-}
-
-/* Стили для иконки дискеты в модальном окне */
-.save__modal .content__modal .floppy__icon__wrapper .floppy__icon {
-  /* Устанавливает ширину иконки */
-  width: 39px;
-  /* Устанавливает высоту иконки */
-  height: 39px;
-}
-
-/* Стили для текста в модальном окне */
-.save__modal .content__modal .modal__text {
-  /* Устанавливает высоту строки */
-  line-height: 150%;
-  /* Преобразует текст в верхний регистр */
-  text-transform: uppercase;
-}
-
-/* Стили для кнопки OK в модальном окне */
-.save__modal .button__OK {
-  /* Устанавливает ширину в 100% */
-  width: 100%;
-  /* Устанавливает высоту */
-  height: 38px;
-}
-
-/* Сти сохранения */
-.button__save {
-  /* Устанавливает максимальную ширину */
-  max-width: 335px;
-  /* Устанавливает ширину */
-  width: 335px;
-  /* Устанавливает внешние отступы */
-  margin: 52px auto 100px;
-  /* Устанавливает минимальную высоту */
-  min-height: 51px;
-  /* Устанавливает расстояние между элементами */
-  gap: 8px;
-}
-
-/* Стили для иконки дискеты внутри кнопки сохранения */
-.button__save .floppy__icon {
-  /* Устанавливает ширину иконки */
-  width: 21px;
-  /* Устанавливает высоту иконки */
-  height: 21px;
-}
-
-/* Стили для кнопки лайка внутри карточки */
-.cards .card .card__footer .card__footer-buttons .card__like-button {
-  /* Устанавливает ширину */
-  width: 130px;
-  /* Устанавливает высоту */
-  height: 38px;
-}
-
-/* Стили для текста внутри кнопки лайка */
-.cards .card .card__footer .card__footer-buttons .card__like-button .button__text {
-  /* Применяет шрифт Press Start 2P */
-  font-family: var(--ps2p-font, "sans-serif");
-  /* Устанавливает размер шрифта */
-  font-size: 14px;
-  /* Устанавливает высоту строки */
-  line-height: 90%;
-}
-
-/* Стили для кнопки-иконки */
-.card__icon-button {
-  /* Применяет флексбокс к кнопке */
-  display: flex;
-  /* Центрирует элементы по поперечной оси */
-  align-items: center;
-  /* Центрирует элементы по главной оси */
-  justify-content: center;
-  /* Устанавливает внутренние отступы */
-  padding: 0;
-  /* Добавляет прозрачную границу */
-  border: 2px solid transparent;
-  /* Устанавливает прозрачный фон */
-  background: transparent;
-  /* Устанавливает курсор */
-  cursor: pointer;
-  /* Применяет плавный переход для цвета границы */
-  transition: border-color 0.3s ease;
-  /* Устанавливает ширину */
-  inline-size: 38px;
-  /* Устанавливает высоту */
-  block-size: 38px;
-}
-
-/* Стили для списка карточек */
-.cards {
-  /* Применяет флексбокс к списку */
-  display: flex;
-  /* Располагает элементы в колонку */
-  flex-direction: column;
-  /* Устанавливает расстояние между карточками */
-  gap: 50px;
-}
-
-/* Стили для карточки */
-.cards .card {
-  /* Применяет флексбокс к карточке */
-  display: flex;
-  /* Располагает элементы в колонку */
-  flex-direction: column;
-  /* Устанавливает фон */
-  background: var(--background-color);
-}
-
-/* Стили для шапки карточки */
-.cards .card .card__header {
-  /* Устанавливает внутренние отступы */
-  padding: 5px 10px;
-  /* Добавляет сплошную границу */
-  border: 2px solid var(--border-color);
-}
-
-/* Стили для заголовка шапки карточки */
-.cards .card .card__header .card__header-heading {
-  /* Устанавливает размер шрифта */
-  font-size: 18px;
-  /* Устанавливает настройки вариаций шрифта */
-  font-variation-settings: "wght" var(--card-headers-width);
-}
-
-/* Стили для изображения в карточке */
-.cards .card .card__img {
-  /* Добавляет левую сплошную границу */
-  border-left: 2px solid var(--border-color);
-  /* Добавляет правую сплошную границу */
-  border-right: 2px solid var(--border-color);
-  /* Устанавливает позицию как относительную */
-  position: relative;
-}
-
-/* Стили для изображения внутри карточки */
-.cards .card .card__img img {
-  /* Устанавливает ширину в 100% */
-  width: 100%;
-  /* Устанавливает отображение как блочное */
-  display: block;
-}
-
-/* Стили для текста на изображении в карточке */
-.cards .card .card__img .card__img-text {
-  /* Применяет шрифт Press Start 2P */
-  font-family: var(--ps2p-font, "sans-serif");
-  /* Устанавливает позицию как абсолютную */
-  position: absolute;
-  /* Устанавливает отступ сверху */
-  top: 25px;
-  /* Устанавливает отступ справа */
-  right: 25px;
-  /* Устанавливает прозрачность */
-  opacity: 50%;
-  /* Устанавливает размер шрифта */
-  font-size: 14px;
-}
-
-/* Стили для подвала карточки */
 .cards .card .card__footer {
-  /* Устанавливает внутренние отступы */
   padding: 25px;
-  /* Добавляет сплошную границу */
   border: 2px solid var(--border-color);
 }
 
-/* Стили для текста в подвале карточки */
 .cards .card .card__footer .card__footer-text {
-  /* Устанавливает высоту строки */
   line-height: 21px;
-  /* Устанавливает размер шрифта */
   font-size: 18px;
 }
 
-/* Стили для текста в подвале карточки, кроме последнего */
 .cards .card .card__footer .card__footer-text:not(:last-child) {
-  /* Устанавливает нижний внешний отступ */
   margin-bottom: 27px;
 }
 
-/* Стили для кнопок в подвале карточки */
-.cards .card .card__footer-buttons {
-  /* Устанавливает верхний внешний отступ */
+.cards .card .card__footer .card__footer-buttons {
   margin-top: 25px;
-  /* Применяет флексбокс к кнопкам */
   display: flex;
-  /* Выравнивает кнопки по правому краю */
   justify-content: end;
-  /* Устанавливает расстояние между кнопками */
   gap: 8px;
 }
 
-/* Стили для основного контента */
-.main {
-  /* Применяет флексбокс к основному контенту */
-  display: flex;
-  /* Располагает элементы в колонку */
-  flex-direction: column;
-  /* Устанавливает максимальную ширину */
-  max-width: 700px;
-  /* Центрирует контент по горизонтали */
-  margin: 0 auto;
-}
-
-/* Стили для шапки */
-.header {
-  /* Применяет шрифт Press Start 2P */
-  font-family: var(--ps2p-font, "sans-serif");
-  /* Устанавливает внешние отступы */
-  margin: 100px auto;
-  /* Применяет флексбокс к шапке */
-  display: flex;
-  /* Выравнивает элементы по центру по главной оси */
-  justify-content: center;
-  /* Выравнивает элементы по центру по поперечной оси */
-  align-items: center;
-  /* Располагает элементы в колонку */
-  flex-direction: column;
-  /* Устанавливает максимальную ширину */
-  max-width: 700px;
-  /* Устанавливает высоту */
-  height: 368px;
-  /* Устанавливает фон */
-  background: var(--background-color);
-  /* Добавляет сплошную границу */
-  border: 2px solid var(--border-color);
-}
-
-/* Стили для заголовка первого уровня в шапке */
-.header h1 {
-  /* Устанавливает размер шрифта */
-  font-size: 65px;
-  /* Устанавливает нормальный вес шрифта */
-  font-weight: normal;
-}
-
-/* Стили для заголовка второго уровня в шапке */
-.header h2 {
-  /* Устанавливает размер шрифта */
-  font-size: 23px;
-  /* Устанавливает нормальный вес шрифта */
-  font-weight: normal;
-  /* Устанавливает верхний внешний отступ */
-  margin-top: 20px;
-  /* Преобразует текст в верхний регистр */
-  text-transform: uppercase;
-}
-
-/* Стили для основной страницы */
-.page {
-  /* Устанавливает минимальную ширину */
-  min-inline-size: 320px;
-  /* Устанавливает минимальную высоту */
-  min-block-size: 100dvb;
-  /* Применяет шрифт Inter */
-  font-family: var(--inter-font, "sans-serif");
-  /* Устанавливает настройки вариаций шрифта */
-  font-variation-settings: "wght" var(--card-text-width), "wdth" 100;
-  /* Устанавливает фон */
-  background: var(--main-background-color);
-  /* Устанавливает размер фона */
-  background-size: cover;
-  /* Устанавливает прикрепленный фон */
-  background-attachment: fixed;
-  /* Устанавливает режим смешивания фона */
-  background-blend-mode: hard-light;
-}
-
-/* Стили для кнопки */
 .button {
-  /* Устанавливает позицию как относительную */
   position: relative;
-  /* Применяет флексбокс к кнопке */
   display: flex;
-  /* Центрирует элементы по поперечной оси */
   align-items: center;
-  /* Центрирует элементы по главной оси */
   justify-content: center;
-  /* Добавляет сплошную границу */
   border: 2px solid var(--border-color);
-  /* Устанавливает фон */
   background: var(--background-color);
-  /* Устанавливает курсор */
   cursor: pointer;
-  /* Применяет плавный переход для тени */
   transition: box-shadow 0.3s ease;
-  /* Скрывает переполнение */
   overflow: hidden;
 }
 
-/* Стили для иконки дискеты внутри кнопки */
 .button .floppy__icon {
-  /* Устанавливает цвет */
   color: var(--background-color);
-  /* Устанавливает режим смешивания */
   mix-blend-mode: difference;
 }
 
-/* Стили для текста внутри кнопки */
 .button .button__text {
-  /* Устанавливает z-индекс */
   z-index: 100;
-  /* Применяет шрифт Press Start 2P */
   font-family: var(--ps2p-font, "sans-serif");
-  /* Устанавливает размер шрифта */
   font-size: 14px;
-  /* Устанавливает высоту строки */
   line-height: 90%;
-  /* Устанавливает цвет текста */
   color: var(--background-color);
-  /* Устанавливает режим смешивания */
   mix-blend-mode: difference;
 }
 
-/* Псевдоэлемент для анимации кнопки */
 .button::after {
-  /* Устанавливает контент пустым */
   content: "";
-  /* Устанавливает позицию как абсолютную */
   position: absolute;
-  /* Устанавливает положение слева */
   left: -100%;
-  /* Устанавливает ширину */
   width: 100%;
-  /* Устанавливает высоту */
   height: 100%;
-  /* Устанавливает фон */
   background: var(--border-color);
-  /* Применяет плавный переход для положения */
   transition: left 0.3s ease;
 }
 
-/* Стили для кнопки при наведении */
 .button:hover::after {
-  /* Сдвигает псевдоэлемент вправо */
   left: 0;
 }
 
-/* Стили для иконки дискеты при наведении на кнопку */
 .button:hover .floppy__icon {
-  /* Устанавливает z-индекс */
   z-index: 100;
 }
 
-/* Стили для кнопки при фокусе */
 .button:focus {
-  /* Устанавливает тень */
   box-shadow: 2px 2px 0 var(--border-color);
 }
 
-/* Стили для изображения с восьмым фильтром */
+.card__icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  inline-size: 38px;
+  block-size: 38px;
+}
+
+.cards .card .card__footer .card__footer-buttons .card__like-button {
+  width: 130px;
+  height: 38px;
+}
+
+.cards .card .card__footer .card__footer-buttons .card__like-button .button__text {
+  font-family: var(--ps2p-font, "sans-serif");
+  font-size: 14px;
+  line-height: 90%;
+}
+
+.button__save {
+  max-width: 335px;
+  width: 335px;
+  margin: 52px auto 100px;
+  min-height: 51px;
+  gap: 8px;
+}
+
+.button__save .floppy__icon {
+  width: 21px;
+  height: 21px;
+}
+
+.save__modal {
+  position: fixed;
+  inset: 0;
+  max-width: 353px;
+  width: 353px;
+  padding: 30px;
+  font-family: var(--ps2p-font, "sans-serif");
+  font-size: 14px;
+  line-height: 90%;
+  border: 2px solid var(--border-color);
+}
+
+.save__modal::backdrop {
+  background: var(--background-modal-color);
+  opacity: 75%;
+}
+
+.save__modal .content__modal {
+  display: flex;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.save__modal .content__modal .floppy__icon__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save__modal .content__modal .floppy__icon__wrapper .floppy__icon {
+  width: 39px;
+  height: 39px;
+}
+
+.save__modal .content__modal .modal__text {
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.save__modal .button__OK {
+  width: 100%;
+  height: 38px;
+}
+
+.section__image {
+  width: 100%;
+  border: 2px solid var(--border-color);
+}
+
 .section__image.filter-eight {
-  /* Применяет размытие, поворот оттенка и сепию */
   filter: blur(3px) hue-rotate(70deg) sepia(50%);
 }
 
-/* Стили для изображения с седьмым фильтром */
 .section__image.filter-seven {
-  /* Применяет размытие */
   filter: blur(20px);
 }
 
-/* изображения с шестым фильтром */
 .section__image.filter-six {
-  /* Применяет сепию */
   filter: sepia(80%);
 }
 
-/* Стили для изображения с пятым фильтром */
 .section__image.filter-five {
-  /* Применяет инверсию */
   filter: invert(100%);
 }
 
-/* Стили для изображения с четвертым фильтром */
 .section__image.filter-four {
-  /* Применяет поворот оттенка */
   filter: hue-rotate(25deg);
 }
 
-/* Стили для изображения с третьим фильтром */
 .section__image.filter-three {
-  /* Применяет насыщенность */
   filter: saturate(400%);
 }
 
-/* Стили для изображения со вторым фильтром */
 .section__image.filter-two {
-  /* Применяет оттенки серого */
   filter: grayscale(80%);
+}
+
+@media (max-width: 500px) {
+  .header h1 {
+    font-size: 49px;
+  }
+
+  .header h2 {
+    font-size: 14px;
+  }
+
+  .button__save {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  .button__save .floppy__icon {
+    width: 28px;
+    height: 28px;
+  }
 }
